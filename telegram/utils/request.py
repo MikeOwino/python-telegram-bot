@@ -70,10 +70,11 @@ from telegram.error import (
     Unauthorized,
 )
 from telegram.utils.types import JSONDict
+from telegram.utils.deprecate import set_new_attribute_deprecated
 
 
 def _render_part(self: RequestField, name: str, value: str) -> str:  # pylint: disable=W0613
-    """
+    r"""
     Monkey patch urllib3.urllib3.fields.RequestField to make it *not* support RFC2231 compliant
     Content-Disposition headers since telegram servers don't understand it. Instead just escape
     \\ and " and replace any \n and \r with a space.
@@ -110,6 +111,8 @@ class Request:
             :class:`telegram.Bot` methods. Defaults to ``5.0``.
 
     """
+
+    __slots__ = ('_connect_timeout', '_con_pool_size', '_con_pool', '__dict__')
 
     def __init__(
         self,
@@ -189,12 +192,16 @@ class Request:
 
                 self._con_pool = mgr
 
+    def __setattr__(self, key: str, value: object) -> None:
+        set_new_attribute_deprecated(self, key, value)
+
     @property
     def con_pool_size(self) -> int:
         """The size of the connection pool used."""
         return self._con_pool_size
 
     def stop(self) -> None:
+        """Performs cleanup on shutdown."""
         self._con_pool.clear()  # type: ignore
 
     @staticmethod
@@ -205,7 +212,6 @@ class Request:
             dict: A JSON parsed as Python dict with results - on error this dict will be empty.
 
         """
-
         decoded_s = json_data.decode('utf-8', 'replace')
         try:
             data = json.loads(decoded_s)

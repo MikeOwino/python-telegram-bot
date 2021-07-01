@@ -77,6 +77,7 @@ The following wonderful people contributed directly or indirectly to this projec
 - `naveenvhegde <https://github.com/naveenvhegde>`_
 - `neurrone <https://github.com/neurrone>`_
 - `NikitaPirate <https://github.com/NikitaPirate>`_
+- `Nikolai Krivenko <https://github.com/nkrivenko>`_
 - `njittam <https://github.com/njittam>`_
 - `Noam Meltzer <https://github.com/tsnoam>`_
 - `Oleg Shlyazhko <https://github.com/ollmer>`_
@@ -105,6 +106,7 @@ The following wonderful people contributed directly or indirectly to this projec
 - `Vorobjev Simon <https://github.com/simonvorobjev>`_
 - `Wagner Macedo <https://github.com/wagnerluis1982>`_
 - `wjt <https://github.com/wjt>`_
+- `zeroone2numeral2 <https://github.com/zeroone2numeral2>`_
 - `zeshuaro <https://github.com/zeshuaro>`_
 
 Please add yourself here alphabetically when you submit your first pull request.
